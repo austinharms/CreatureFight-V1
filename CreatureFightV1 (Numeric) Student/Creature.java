@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Creature extends Actor
 {
     //TODO (5): Declare a HealthBar instance variable called creatureBar. Do not initialize it
-    
+    private HealthBar creatureBar;
     //TODO (6): Declare an integer variable called healthNumber. Do not initialize it
-    
+    private int healthNumber;
     //TODO (7): Declare an integer variable called playerOwnership. Do not initialize it
-    
+    private int playerOwnership;
     
     /**
      * Default constructor for objects of the Creature class
@@ -24,11 +24,11 @@ public class Creature extends Actor
     public Creature()
     {
         //TODO (8): Initialize the healthNumber variable to 500.
-        
+        healthNumber = 500;
         //TODO (9): Initialize the playerOwnership variable to 0.
-        
+        playerOwnership = 0;
         //TODO (10): Initialize the creatureBar variable to a new HealthBar object with parameters healthNumber, healthNumber, and 10
-
+        creatureBar = new HealthBar(healthNumber, healthNumber, 10);
     }
 
     /**
@@ -41,11 +41,11 @@ public class Creature extends Actor
     public Creature( int health, int whichPlayer )
     {
         //TODO (11): Initialize the healthNumber variable to  the health parameter
-        
+        healthNumber = health;
         //TODO (12): Initialize the playerOwnership variable to the whichPlayer parameter
-        
+        playerOwnership = whichPlayer;
         //TODO (13): Initialize the creatureBar variable to a new HealthBar object with parameters healthNumber, healthNumber, and 10
-        
+        creatureBar = new HealthBar(healthNumber, healthNumber, 10);
     }
     
     /**
@@ -76,11 +76,18 @@ public class Creature extends Actor
      * 
      * TODO (15): This method will simply return the creatureBar variable
      */
-
+    protected HealthBar getHealthBar()
+    {
+        return creatureBar;
+    }
     
     /**
      * TODO (16): Declare a public method called getPlayerOwner that returns an integer and has no parameters
      * 
      * TODO (17): This method returns the playerOwnership variable
      */
+    public int getPlayerOwner()
+    {
+        return playerOwnership;
+    }
 }

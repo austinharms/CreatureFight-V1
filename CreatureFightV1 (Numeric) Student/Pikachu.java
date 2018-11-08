@@ -21,7 +21,12 @@ public class Pikachu extends Creature
      *            by using the getHealthBar() method as the first parameter and adding it at an x location 
      *            of 100 and a y location of 25
      */
-    
+        public Pikachu(World world)
+    {
+        super(650, 2);
+        getImage().scale(150, 100);
+        world.addObject(getHealthBar(), 100, 25);
+    }
     /**
      * Act - do whatever the Pikachu wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -34,7 +39,12 @@ public class Pikachu extends Creature
          * TODO (46): Create a CreatureWorld variable called playerWorld. Initialize it
          *            to a reference to your CreatureWorld. Use Charmander as a reference if needed
          */
-        
+                CreatureWorld playerWorld = (CreatureWorld) getWorld();
+        if(getHealthBar().getCurrent() <= 0)
+        {
+          getWorld().showText("Pikachu has fainted", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
+            Greenfoot.delay(30);
+        }
         //TODO (47): If Pikachu's health bar has a current health less than or equal to 0 (you must get the health bar and then get its current value)...
         
             //TODO (48): Get the world and use it to show text that says that Pikachu has fainted at an x location of getWorld().getWidth()/2 and a y location of getWorld().getHeight()/2 + 26

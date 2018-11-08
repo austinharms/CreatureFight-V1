@@ -1,14 +1,13 @@
 /**
  * TODO (50): Fill out the following information...
  * 
- * Name: 
- * Course: 
- * Teacher: 
- * Date Last Modified: 
+ * Name: austin harms 
+ * Course: computer sciance
+ * Teacher: mr hardman
+ * Date Last Modified: nov 7 
  */
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.util.List;
 
@@ -21,7 +20,8 @@ import java.util.List;
 public class CreatureWorld extends World
 {
     //TODO (1): Declare two private Creature instance variables to store a player one creature and player two creature
-    
+    public Creature playerTwoCreature;
+    public Creature playerOneCreature;
     /**
      * Default constructor for objects of class CreatureWorld.
      * 
@@ -32,21 +32,22 @@ public class CreatureWorld extends World
     {    
         // Create a new world with 400x400 cells with a cell size of 1x1 pixels.
         super(400, 400, 1); 
-        
+
         /**
          * TODO (26): Set the creature variables from TODO 1 to what they should be...
          * Player one's creature is a new Charmander and player two's creature is a new Pikachu
          * 
          * Hint: each new Creature will require a reference to the CreatureWorld, so use "this" in the parameters 
          */
-        
-        
+        playerOneCreature = new Charmander(this);
+        playerTwoCreature = new Pikachu(this);
+
         //TODO (32): Add a method call to the prepareCreatures method you created. You should see all your objects in your world. If you don't, try to fix it
-        
-        
+        prepareCreatures();
+
         Greenfoot.start();
     }
-    
+
     /**
      * act will complete actions that the CreatureWorld object should
      * accomplish while the scenario is running
@@ -62,26 +63,38 @@ public class CreatureWorld extends World
          *            store all objects, so use a parameter of null. That will get all objects, not just the objects
          *            of one class
          */
-        
-        
+        List allObjects = getObjects(null);
+
         // TODO (34): If playerOneCreature's health bar has a current health less than or equal to 0...
-        
+        if(playerOneCreature.getHealthBar().getCurrent() <= 0)
+        {
+            removeObjects(allObjects);
             //TODO (35): Make a call to removeObjects and use the allObjects list as the parameter
-            
+
             //TODO (36): Use the show text method to display that player two wins in the centre of the scenario
-            
+            showText("Player Two Wins", getWidth()/2, getHeight()/2);
             //TODO (37): Stop the scenario
-            
-        
+            Greenfoot.stop();
+        }
         //TODO (38): If playerTwoCreature's health bar has a current health less than or equal to 0...
-        
-            //TODO (39): Make a call to removeObjects and use the allObjects list as the parameter
-            
-            //TODO (40): Use the show text method to display that player one wins in the centre of the scenario
-            
-            //TODO (41): Stop the scenario
+
+        //TODO (39): Make a call to removeObjects and use the allObjects list as the parameter
+
+        //TODO (40): Use the show text method to display that player one wins in the centre of the scenario
+
+        //TODO (41): Stop the scenario
+        if(playerTwoCreature.getHealthBar().getCurrent() <= 0)
+        {
+            removeObjects(allObjects);
+            //TODO (35): Make a call to removeObjects and use the allObjects list as the parameter
+
+            //TODO (36): Use the show text method to display that player two wins in the centre of the scenario
+            showText("Player One Wins", getWidth()/2, getHeight()/2);
+            //TODO (37): Stop the scenario
+            Greenfoot.stop();
+        }
     }
-    
+
     /**
      * TODO (27): Declare a prepareCreatures method that has no return type and no parameters
      * 
@@ -103,7 +116,14 @@ public class CreatureWorld extends World
      *           has the color RED and a value of 50 at an x location of getWidth()/2 and a y 
      *           location of 100.
      */
-    
+    private void prepareCreatures()
+    {
+        addObject(playerOneCreature, playerOneCreature.getImage().getWidth()/2, getHeight() - playerOneCreature.getImage().getHeight()/2);
+        addObject( new Button( Color.RED, 50 ), getWidth()/2, getHeight() - 100);
+        addObject(playerTwoCreature, getWidth() - playerTwoCreature.getImage().getWidth()/2, playerTwoCreature.getImage().getHeight()/2);
+        addObject( new Button( Color.RED, 50 ), getWidth()/2, 100);
+    }
+
     
     /**
      * TODO (2): Declare a public method called getPlayerOne that returns a Creature object and
@@ -111,10 +131,18 @@ public class CreatureWorld extends World
      * 
      * TODO (3): The one thing this method should do is return the playerOneCreature
      */
-    
+    public Creature getPlayerOne()
+    {
+        return playerOneCreature;
+    }
+
     /**
      * TODO (4): Declare a public method called getPlayerTwo that returns a Creature object and
      *           has no parameters. You should be available to figure out what this method does
      *           from the previous two TODOs
      */
+    public Creature getPlayerTwo()
+    {
+        return playerTwoCreature;
+    }
 }

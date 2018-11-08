@@ -22,7 +22,13 @@ public class Charmander extends Creature
      *            by using the getHealthBar() method as the first parameter and adding it at an x location 
      *            of 300 and a y location of the height of the world - 50
      */
-    
+    public Charmander(World world)
+    {
+        super(700, 1);
+        getImage().scale(150, 100);
+        
+        world.addObject(getHealthBar(), 300, world.getHeight() - 50);
+    }
     /**
      * Act - do whatever the Charmander wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -36,11 +42,14 @@ public class Charmander extends Creature
          *            to a reference to your CreatureWorld. To do this, you must use the getWorld()
          *            method and CAST that result to the CreatureWorld type
          */
-        
+        CreatureWorld playerWorld = (CreatureWorld) getWorld();
         //TODO (43): If Charmander's health bar has a current health less than or equal to 0 (you must get the health bar and then get its current value)...
-        
+        if(getHealthBar().getCurrent() <= 0)
+        {
             //TODO (44): Get the world and use it to show text that says that Charmander has fainted at an x location of getWorld().getWidth()/2 and a y location of getWorld().getHeight()/2 + 26
-            
+            getWorld().showText("Charmander has fainted", getWorld().getWidth()/2, getWorld().getHeight()/2 + 26);
             //TODO (45): Delay the scenario by 30 act cycles
+            Greenfoot.delay(30);
+        }
     }    
 }
