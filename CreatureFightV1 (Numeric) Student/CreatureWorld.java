@@ -20,10 +20,14 @@ import java.util.List;
 public class CreatureWorld extends World
 {
     //TODO (1): Declare two private Creature instance variables to store a player one creature and player two creature
+    //stores a creature object
     public Creature playerTwoCreature;
+    //stores a creature object
     public Creature playerOneCreature;
     /**
      * Default constructor for objects of class CreatureWorld.
+     * sets playerOneCreature to a charmander and playerTwoCreature to a pikachu then runs the prepareCreatures
+     * method and run the program
      * 
      * @param There are no parameters
      * @return an object of class CreatureWorld
@@ -50,7 +54,8 @@ public class CreatureWorld extends World
 
     /**
      * act will complete actions that the CreatureWorld object should
-     * accomplish while the scenario is running
+     * accomplish while the scenario is running checks if one of the plyers has won
+     * if so it says so and removes all objects and stops the program
      * 
      * @param There are no parameters
      * @return Nothing is returned
@@ -116,6 +121,12 @@ public class CreatureWorld extends World
      *           has the color RED and a value of 50 at an x location of getWidth()/2 and a y 
      *           location of 100.
      */
+    /**
+     * prepareCreatures adds playerOneCreature, playerTwoCreature and two button objects to the world
+     * 
+     * @param no paramiters
+     * @return nothing is returned
+     */
     private void prepareCreatures()
     {
         addObject(playerOneCreature, playerOneCreature.getImage().getWidth()/2, getHeight() - playerOneCreature.getImage().getHeight()/2);
@@ -131,6 +142,12 @@ public class CreatureWorld extends World
      * 
      * TODO (3): The one thing this method should do is return the playerOneCreature
      */
+    /**
+     * getPlayerOne returns playerOneCreature
+     * 
+     * @param no paramiters
+     * @return a playerOneCreature is returned
+     */
     public Creature getPlayerOne()
     {
         return playerOneCreature;
@@ -140,6 +157,13 @@ public class CreatureWorld extends World
      * TODO (4): Declare a public method called getPlayerTwo that returns a Creature object and
      *           has no parameters. You should be available to figure out what this method does
      *           from the previous two TODOs
+     */
+    
+    /**
+     * getPlayerTwo returns playerTwoCreature
+     * 
+     * @param no paramiters
+     * @return a playerTwoCreature is returned
      */
     public Creature getPlayerTwo()
     {

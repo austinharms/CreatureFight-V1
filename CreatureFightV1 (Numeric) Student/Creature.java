@@ -9,14 +9,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Creature extends Actor
 {
     //TODO (5): Declare a HealthBar instance variable called creatureBar. Do not initialize it
+    //store the health bar for the creature
     private HealthBar creatureBar;
     //TODO (6): Declare an integer variable called healthNumber. Do not initialize it
+    //store the health value for the creature
     private int healthNumber;
     //TODO (7): Declare an integer variable called playerOwnership. Do not initialize it
+    //store the owner number for the creature
     private int playerOwnership;
     
     /**
      * Default constructor for objects of the Creature class
+     * initialize the values for healthNumbe, playerOwnership, creatureBar
      * 
      * @param There are no parameters
      * @return an object of the Creature class

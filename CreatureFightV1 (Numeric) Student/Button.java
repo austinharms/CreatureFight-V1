@@ -8,15 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Button extends Actor
 {
+    //stores the images for the button
     private GreenfootImage buttonImage1 = new GreenfootImage(100, 50);
     private GreenfootImage buttonImage2 = new GreenfootImage(100, 50);
-    
+    //stores wether it has just been clicked
     private boolean justClicked = false;
     
     //TODO (45): Add an integer instance variable called value that is not initialized
     private int value;
     /**
      * Default constructor for objects of the Button class
+     * sets the images for the button
      * 
      * @param There are no parameters
      * @return an object of the Button type
@@ -94,8 +96,10 @@ public class Button extends Actor
     }
 
     /**
-     * Act - do whatever the Button wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * act checks if the mouse has pressed the button and if it has it takes away health from the creatuer
+     * 
+     * @param there is no paramiters
+     * @return nothing is returned
      */
     public void act() 
     {
